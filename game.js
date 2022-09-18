@@ -1,4 +1,9 @@
 
+
+let username= prompt("Enter your username: ");
+let points=0;
+window.localStorage.setItem("username",points, JSON.stringify(username));
+
 let loser = false;
 let starts=false; 
 window.onload = function() {
@@ -23,6 +28,7 @@ function overBoundary() {
 }
 
 function startClick() {
+    window.localStorage.setItem("username",points=0, JSON.stringify(username));
     starts=true;
     document.getElementById('status').textContent="Begin by moving your mouse over the 'S'.";
     loser = false;
@@ -46,8 +52,14 @@ function cheating() {
 function overEnd() {
     if(loser) {
         document.getElementById('status').textContent="You lost.";
+        window.localStorage.setItem("username",points-=10, JSON.stringify(username));
+        
     } else {
         document.getElementById('status').textContent="You win.";
+        window.localStorage.setItem("username",points+=5, JSON.stringify(username));
+        
     }
+    console.log(window.localStorage.getItem("username"));
+
     starts=false;
 }
